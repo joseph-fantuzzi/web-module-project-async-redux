@@ -13,7 +13,6 @@ export const fetchZip = (zip) => (dispatch) => {
       dispatch({ type: FIND_ZIP, payload: res.data });
     })
     .catch((err) => {
-      console.log(err.message);
       dispatch({ type: ERROR_MSG, payload: err.message });
     });
 };

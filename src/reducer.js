@@ -2,7 +2,7 @@ import { INPUT_CHANGE, FIND_ZIP, ERROR_MSG } from "./action-types";
 
 const initialState = {
   search: "",
-  zip: {},
+  zip: null,
   error: "",
 };
 
@@ -16,14 +16,16 @@ const reducer = (state = initialState, action) => {
 
     case FIND_ZIP:
       return {
-        ...state,
         zip: action.payload,
+        search: "",
+        error: "",
       };
 
     case ERROR_MSG:
       return {
         ...state,
         error: action.payload,
+        search: "",
       };
 
     default:

@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
+import ZipInfo from "./ZipInfo";
 
 import { inputChange, fetchZip } from "./action-creators";
 
 function App(props) {
-  const { search, zip, error, inputChange, fetchZip } = props;
+  const { search, error, inputChange, fetchZip } = props;
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -19,13 +20,14 @@ function App(props) {
 
   return (
     <div>
-      <h1>Zip Code Information</h1>
+      <h1>ZIPPY</h1>
       <form onSubmit={submitHandler}>
-        <label htmlFor="search">Search a Zip Code</label>
+        <label htmlFor="search">Search for a Zip Code</label>
         <input type="text" id="search" name="search" value={search} onChange={changeHandler} />
         <button>Search</button>
       </form>
       {error && <p>{error}</p>}
+      <ZipInfo />
     </div>
   );
 }
@@ -33,7 +35,6 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     search: state.search,
-    zip: state.zip,
     error: state.error,
   };
 };
