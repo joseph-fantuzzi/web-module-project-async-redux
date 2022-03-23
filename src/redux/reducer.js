@@ -23,9 +23,9 @@ const reducer = (state = initialState, action) => {
 
     case ERROR_MSG:
       return {
-        ...state,
         error: action.payload,
         search: "",
+        zip: null,
       };
 
     default:

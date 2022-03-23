@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./App.css";
 import ZipInfo from "./ZipInfo";
 
-import { inputChange, fetchZip } from "./action-creators";
+import { inputChange, fetchZip } from "../redux/action-creators";
 
 function App(props) {
   const { search, error, inputChange, fetchZip } = props;
@@ -21,6 +20,7 @@ function App(props) {
   return (
     <div>
       <h1>ZIPPY</h1>
+      <h2>Zip Code Information Center</h2>
       <form onSubmit={submitHandler}>
         <label htmlFor="search">Search for a Zip Code</label>
         <input type="text" id="search" name="search" value={search} onChange={changeHandler} />
