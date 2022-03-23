@@ -2,15 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
 
-//https://api.zippopotam.us/us/33162
+import { inputChange, fetchZip } from "./action-creators";
 
-function App() {
+function App(props) {
+  const { search, zip, error, inputChange, fetchZip } = props;
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
+    inputChange(name, value);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    fetchZip(search);
   };
 
   return (
@@ -18,11 +22,20 @@ function App() {
       <h1>Zip Code Information</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="search">Search a Zip Code</label>
-        <input type="text" id="search" value="" onChange={changeHandler} />
+        <input type="text" id="search" name="search" value={search} onChange={changeHandler} />
         <button>Search</button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   );
 }
 
-export default connect(null, {})(App);
+const mapStateToProps = (state) => {
+  return {
+    search: state.search,
+    zip: state.zip,
+    error: state.error,
+  };
+};
+
+export default connect(mapStateToProps, { inputChange, fetchZip })(App);
