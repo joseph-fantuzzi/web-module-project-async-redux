@@ -1,0 +1,35 @@
+.zip-container {
+  background-color: #3d3e44;
+  margin: 0 auto;
+  margin-top: 5em;
+  width: 30%;
+  min-width: 500px;
+  color: white;
+  padding: 5em 0;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: 400;
+}
+
+.nested {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.zip-title {
+  font-weight: 700;
+  font-size: 25px;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.places-title {
+  margin-left: 1em;
+}
+
+@media (max-width: 570px) {
+  .zip-container {
+    width: 90%;
+    min-width: 0;
+  }
+}
